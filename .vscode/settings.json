@@ -1,0 +1,5 @@
+{   
+    "editor.formatOnSave": true,
+    "files.autoSaveDelay": 500,
+    "files.autoSave": "afterDelay"
+}

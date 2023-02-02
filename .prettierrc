@@ -1,0 +1,12 @@
+{
+    "singleQuote": true,
+    "bracketSpacing": true,
+    "endOfLine": "lf",
+    "singleAttributePerLine": true,
+    "bracketSameLine": true,
+    "jsxBracketSameLine": true,
+    "jsxSingleQuote":true,
+    "semi":true,
+    "tabWidth": 2,
+    "parser":"typescript"
+}
