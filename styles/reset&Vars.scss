@@ -1,0 +1,65 @@
+:root{
+    --color:#e8e8e8;
+    --color-gray:#E2E0E0;
+    --bg-color:#1a1a1a;
+    --bg-color-hover:#242424;
+    --color-blue:#0074FF;
+    --neoSdw1:#2d2d2dad;
+    --neoSdw2:#00000099;
+    --placeholder: #444;
+    --invalid-color:#FF8870;
+    --valid-color: #40e0d0;
+    --swt-text: 'to light';
+    --textFont: 'Louis George Cafe';
+    --titleFont: architextregular;
+    --purple-gradient: linear-gradient(112.5deg, rgb(150, 39, 201), rgb(197, 107, 170),rgb(150, 39, 201), rgb(197, 107, 170),rgb(150, 39, 201));
+    --red-gradient: linear-gradient(112.5deg, #f7b42c , #fc575e,#f7b42c , #fc575e,#f7b42c);
+    --green-gradient: linear-gradient(112.5deg, #7ee8fa , #80ff72,#7ee8fa , #80ff72,#7ee8fa );
+    
+}
+.light-mode{
+    --valid-color: #0da189;
+    --placeholder: #cecece;
+    --bg-color:#e8e8e8;
+    --bg-color-hover:#e4e4e4;
+    --neoSdw1:#ffffffdd;
+    --neoSdw2:#66666677; 
+    --color:#3a3a3a;
+    --invalid-color:#f77;
+    --swt-text: 'to dark';
+    --red-gradient: linear-gradient(112.5deg, #f3c631 , #ca111a,#f3c631  , #ca111a,#f3c631 );
+    --green-gradient:linear-gradient(112.5deg, #3bb78f, #0bab64,#3bb78f, #0bab64,#3bb78f );
+} 
+@media(prefers-color-scheme: light){
+    .light-mode:root{
+        --valid-color: #0da189;
+        --placeholder: #cecece;
+        --bg-color:#e8e8e8;
+        --bg-color-hover:#e4e4e4;
+        --neoSdw1:#ffffffdd;
+        --neoSdw2:#66666677; 
+        --color:#3a3a3a;
+        --invalid-color:#f77;
+    }
+}
+    
+    * {
+        padding: 0px;
+        box-sizing: border-box;
+        margin: 0px;
+    }
+    button {
+        border: none;
+        outline: none;
+    }
+    input{
+        border:none;
+    }
+    input:focus{
+        outline: none;
+    }
+    
+    input:focus input:-webkit-autofill,
+    input:-webkit-autofill:focus {
+        transition: background-color 600000s 0s, color 600000s 0s;
+    }
