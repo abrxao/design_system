@@ -1,0 +1,8 @@
+.neo-card-description-box{
+        display: flex;
+        max-height: 200px;
+        flex-direction: column;
+        padding: 0 1em .75em 1em;
+        color: var(--color);
+        font-family: var(--textFont);
+    }
