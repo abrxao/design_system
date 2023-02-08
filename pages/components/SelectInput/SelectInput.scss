@@ -1,0 +1,78 @@
+.neo-input-select{
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    width: 100%;
+    max-width: 300px;
+    label{
+        position: relative;
+        width: 100%;
+        color:var(--color);
+        font-size: 1rem;
+        font-family: var(--textFont);
+        &::after{
+            content:"";
+            border:.5em solid transparent;
+            border-top-color: var(--bgColor);
+            display: inline-block;
+            position: absolute;
+            right: .5rem;
+            bottom: .25em;
+            border-radius: .2rem;
+            pointer-events: none;
+            cursor: pointer;
+        }
+        select{
+            width: 100%;
+            box-shadow:
+            -.125em -.125em 5px var(--neoSdw1),
+            .125em .125em 5px var(--neoSdw2);
+            margin-top: .2rem;
+            background-color: var(--bg-color);
+            color:var(--bgColor);
+            font-weight: 300;
+            border: none;
+            padding: .5rem .8rem;
+            border-radius: .3rem;
+            font-family: var(--textFont);
+            font-size: 1rem;
+            outline: none;
+            cursor: pointer;
+            appearance: none;
+        }
+        .loading{
+            z-index: 1;
+            box-shadow:
+            -.125em -.125em 5px var(--neoSdw1),
+            .125em .125em 5px var(--neoSdw2);
+            position: relative;
+            width: 100%;
+            height: 2rem;
+            background-color: var(--bg-color);
+            border-radius: .3rem;
+            overflow: hidden;
+            span{
+                position: absolute;
+                left: 50%;
+                background-color: #0004;
+                box-shadow: 0 0 10px 10px #0004;
+                padding: 1rem 1rem;
+                animation: loading .8s infinite ease-in-out;
+            }
+        }
+    }
+    
+    &.disable{
+        opacity: .6;
+        pointer-events: none;
+    }
+}
+
+@keyframes loading {
+    0%{
+        left: -3rem;
+    }
+    100%{
+        left: calc(100% + 3rem);
+    }
+}
