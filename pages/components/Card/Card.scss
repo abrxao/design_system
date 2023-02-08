@@ -1,0 +1,20 @@
+.neo-card{
+    width: 100%;
+    max-width: 350px;
+    display: flex;
+    position: relative;
+    border-radius:1.5em;
+    overflow: hidden;
+    border: .4em solid #fff0;
+    flex-direction: column;
+    box-shadow:
+    -.25em -.25em 5px var(--neoSdw1),
+    .25em .25em 5px var(--neoSdw2);
+    &.inset{
+        border-radius: 1em;
+        padding: .5rem;
+        box-shadow:
+        inset -.25em -.25em 5px var(--neoSdw1),
+        inset .25em .25em 5px var(--neoSdw2);  
+    }
+}
