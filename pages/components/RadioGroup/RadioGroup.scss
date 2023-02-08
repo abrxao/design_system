@@ -1,0 +1,62 @@
+.radioGroup{
+    display: flex;
+    align-items: center;
+    fieldset{
+        border: none;
+        label{
+            color: var(--color);
+            font-family: var(--textFont);
+        }
+    }
+    .inputs{
+        border-radius: 3rem; 
+        overflow: hidden;
+        border: .125em solid #fff0;
+        min-height: 2.9em;
+        box-shadow: 
+        -.125em -.125em 5px var(--neoSdw1),
+        .125em .125em 5px var(--neoSdw2);
+        &.invalid{
+            border:1px solid #f007;
+        }
+        
+        .inputBlock{
+            &:first-of-type{
+                label{
+                   border-top-left-radius: 1em; 
+                }
+            
+            }
+            input{                    
+                position: absolute;
+                left: -120vw;
+                &+ label{
+                    @media(max-width:320px){
+                        padding: .3rem;
+                    }
+                    font-family: var(--textFont);
+                    color: var(--color);
+                    cursor: pointer;
+                    font-size: 1.2em;
+                    text-align: center;
+                    font-weight: 200;
+                    width: 100%;
+                    padding: .6em;
+                    opacity: .7;
+                    transition: .150s;
+                    &:hover{
+                        opacity: 1;
+                    }
+                }
+                &:checked + label{
+                    opacity: 1;
+                    font-weight: normal;
+                    box-shadow: 
+                    inset -.125em -.125em 5px var(--neoSdw1),
+                    inset .125em .125em 5px var(--neoSdw2);
+                }
+            }   
+        }
+        
+    }
+}
