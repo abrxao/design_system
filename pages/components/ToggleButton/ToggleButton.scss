@@ -1,0 +1,73 @@
+.neo-toogle-btn{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    aspect-ratio: 1;
+    width:1.5em; 
+    &.md{
+        width:2.5em;
+        input{
+            border: .2em solid var(--bg-color);
+            & ~ label{
+                margin-top: 3px;
+                font-size: 1em;
+            }
+        }
+    }
+    &.lg{
+        width: 3.5em;
+        input{
+            border: .3em solid var(--bg-color);
+            & ~ label{
+                margin-top: 3px;
+                font-size: 1.3em;
+            }
+        }
+    }
+    *{
+        cursor: pointer;
+    }
+    input{
+        background-image: var(--bg-color);
+        background-size: 550%;
+        & ~ label{
+            font-size: .7em;
+            color: var(--color);
+            position: absolute;
+            
+        }
+        aspect-ratio: 1;
+        width: 100%;
+        -webkit-appearance: none;
+        justify-content: center;
+        align-items: center;
+        display: flex;
+        cursor: pointer;
+        outline: none;
+        cursor: pointer;
+        border-radius: 50%;   
+        box-shadow: 
+        -2px -2px 5px var(--neoSdw1),
+        2px 2px 5px var(--neoSdw2);
+        border: .125em solid var(--bg-color);
+        font-size: 1.4rem;
+        &:checked{
+            animation: toogle 16s infinite linear;
+            box-shadow: 
+            -2px -3px 5px var(--neoSdw1),
+            3px 3px 5px var(--neoSdw2),
+            inset -2px -3px 5px var(--neoSdw1),
+            inset 3px 3px 5px var(--neoSdw2);
+        }
+    }
+}
+
+@keyframes toogle{
+    from{
+        background-position: -550%;
+    }
+    to{
+        background-position: 0%;
+    }
+}
