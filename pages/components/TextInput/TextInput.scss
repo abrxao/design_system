@@ -1,0 +1,103 @@
+.neo-input{
+    transition: .15s;
+    position: relative;
+    padding:1.4em 0;
+    font-family: var(--textFont);
+    span.alert{
+        display: none;
+    }
+    input{
+        color: var(--color);
+        font-family: var(--textFont);
+        font-size: 1.2rem;
+        background-color: #ffffff00;
+        padding: .5em 1em;
+        text-shadow: 1px 1px 1px var(--neoSdw2);
+        font-weight: bold;
+        border-radius: 2em;
+        width: 100%;
+        box-shadow:
+        inset -2px -2px 5px var(--neoSdw1),
+        inset 2px 2px 5px var(--neoSdw2);
+        
+        ~label{
+            font-weight: 300;
+            opacity: .75;
+            transition: .15s;
+            font-size: 1.2rem;
+            position: absolute;
+            color: var(--color);
+            top: 1.7em;
+            left: .75em;
+            pointer-events: none;            
+        }
+        &.filled ~{
+            label{
+                font-size: 1em;
+                opacity: 1;
+                top: 0em;
+            }
+        }
+        &:focus ~{
+            label{
+                font-size: 1em;
+                opacity: 1;
+                top: 0em;
+            }
+        }
+    }
+    
+    span.required{
+        transition: .15s;
+        color: var(--color);
+        transform: rotate(0deg);
+        position: absolute;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        right: .5em;
+        top:1.9em;
+        width: 1.7em;
+        aspect-ratio: 1;
+        border-radius: .9em;
+        box-shadow:
+        -2px -2px 5px var(--neoSdw1),
+        2px 2px 5px var(--neoSdw2);        
+    }
+    &.valid{
+        span.required{
+            transform: rotate(180deg);
+            color:var(--valid-color);
+            box-shadow:
+            2px 2px 5px var(--neoSdw1),
+            -2px -2px 5px var(--neoSdw2); 
+            
+        }
+    }
+    &.invalid{
+        span.alert{
+            display: block;
+            font-size: .9em;
+            svg{
+                position: absolute;
+                right: -18px;
+                zoom:1.1;
+                color:var(--invalid-color)
+            }
+            color: var(--color);
+            font-weight: 300;
+            text-align: right;
+            position: absolute;
+            width: 90%;
+            bottom: 0em;
+            left: 0;
+        }
+        span.required{
+            transform: rotate(-180deg);
+            color:var(--invalid-color);
+            box-shadow:
+            2px 2px 5px var(--neoSdw1),
+            -2px -2px 5px var(--neoSdw2); 
+        }
+    }
+}
