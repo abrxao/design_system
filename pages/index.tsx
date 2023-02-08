@@ -1,12 +1,21 @@
 import Head from 'next/head';
+import React, { FunctionComponent, SyntheticEvent, useEffect } from 'react';
+import Button from './components/Button/Button';
+import Container from './components/Container/Container';
+import { SiAltiumdesigner } from 'react-icons/si';
+import TextInput from './components/TextInput/TextInput';
+import RadioGroup from './components/RadioGroup/RadioGroup';
+import Card from './components/Card/Card';
+import wallpaper from '../public/wallpaper.webp';
+import Tag from './components/Tag/Tag';
+import CardImgBox from './components/CardImgBox/CardImgBox';
 import Image from 'next/image';
-import { Inter } from '@next/font/google';
-import styles from '../styles/Home.module.css';
-import { FunctionComponent } from 'react';
+import CardDescriptionBox from './components/CardDescriptionBox/CardDescriptionBox';
+import Title from './components/Title/Title';
+import Text from './components/Text/Text';
+import SelectInput from './components/SelectInput/SelectInput';
 
-const inter = Inter({ subsets: ['latin'] });
-
-export const Home:FunctionComponent = ({})=>{
+export const Home: FunctionComponent = () => {
   return (
     <>
       <Head>
@@ -24,105 +33,83 @@ export const Home:FunctionComponent = ({})=>{
           href='/favicon.ico'
         />
       </Head>
-      <main className={styles.main}>
-        <div className={styles.description}>
-          <p>
-            Get started by editing&nbsp;
-            <code className={styles.code}>pages/index.tsx</code>
-          </p>
-          <div>
-            <a
-              href='https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app'
-              target='_blank'
-              rel='noopener noreferrer'>
-              By{' '}
-              <Image
-                src='/vercel.svg'
-                alt='Vercel Logo'
-                className={styles.vercelLogo}
-                width={100}
-                height={24}
-                priority
-              />
-            </a>
-          </div>
-        </div>
-
-        <div className={styles.center}>
-          <Image
-            className={styles.logo}
-            src='/next.svg'
-            alt='Next.js Logo'
-            width={180}
-            height={37}
-            priority
+      <main>
+        <Container variation='sm'>
+          <TextInput
+            required={true}
+            label='label'
           />
-          <div className={styles.thirteen}>
-            <Image
-              src='/thirteen.svg'
-              alt='13'
-              width={40}
-              height={31}
-              priority
-            />
-          </div>
-        </div>
-
-        <div className={styles.grid}>
-          <a
-            href='https://nextjs.org/docs?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app'
-            className={styles.card}
-            target='_blank'
-            rel='noopener noreferrer'>
-            <h2 className={inter.className}>
-              Docs <span>-&gt;</span>
-            </h2>
-            <p className={inter.className}>
-              Find in-depth information about Next.js features and&nbsp;API.
-            </p>
-          </a>
-
-          <a
-            href='https://nextjs.org/learn?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app'
-            className={styles.card}
-            target='_blank'
-            rel='noopener noreferrer'>
-            <h2 className={inter.className}>
-              Learn <span>-&gt;</span>
-            </h2>
-            <p className={inter.className}>
-              Learn about Next.js in an interactive course with&nbsp;quizzes!
-            </p>
-          </a>
-
-          <a
-            href='https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app'
-            className={styles.card}
-            target='_blank'
-            rel='noopener noreferrer'>
-            <h2 className={inter.className}>
-              Templates <span>-&gt;</span>
-            </h2>
-            <p className={inter.className}>
-              Discover and deploy boilerplate example Next.js&nbsp;projects.
-            </p>
-          </a>
-
-          <a
-            href='https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app'
-            className={styles.card}
-            target='_blank'
-            rel='noopener noreferrer'>
-            <h2 className={inter.className}>
-              Deploy <span>-&gt;</span>
-            </h2>
-            <p className={inter.className}>
-              Instantly deploy your Next.js site to a shareable URL
-              with&nbsp;Vercel.
-            </p>
-          </a>
-        </div>
+          <RadioGroup
+            label='teste'
+            options={['one', 'two', 'three']}
+          />
+          <SelectInput
+            onChange={(e) => {
+              console.log(e.target);
+            }}
+            id='select'
+            disable={false}
+            isLoading={false}
+            title='Select one'
+            options={[' ', 'teste', 'teste2', 'teste3', 'teste4']}
+            sx={{ maxWidth: '140px' }}
+          />
+        </Container>
+        <Container variation='sm'>
+          <Button
+            variation='primary'
+            Icon={<SiAltiumdesigner />}>
+            button
+          </Button>
+          <Button
+            variation='outlined'
+            Icon={<SiAltiumdesigner />}>
+            button
+          </Button>
+          <Button
+            variation='bt-line'
+            width='w-100'>
+            button
+          </Button>
+          <Button
+            variation='secondary'
+            width='w-100'>
+            button
+          </Button>
+        </Container>
+        <Container variation='sm'>
+          <Card>
+            <CardImgBox>
+              <Tag
+                variation='purple'
+                sx={{ top: '-.25em' }}>
+                UNVALIABLE
+              </Tag>
+              <Image
+                fill
+                src={wallpaper}
+                alt=''
+              />
+            </CardImgBox>
+            <CardDescriptionBox>
+              <Title variation='h2'>Description</Title>
+              <Text>
+                Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+                Possimus alias aut magni officiis necessitatibus ipsum sit
+                repellendus, perspiciatis illum asperiores harum? Est saepe aut,
+                asperiores iste sunt consequuntur possimus
+                explicabo?sadfasdasdasdasdasdasdasdas Lorem ipsum dolor sit amet
+                consectetur adipisicing elit. Ea quis ducimus fugit quas tempore
+                maxime molestiae delectus distinctio totam illum eaque ipsam,
+                culpa recusandae quam necessitatibus odio. Atque, obcaecati
+                nesciunt.
+              </Text>
+            </CardDescriptionBox>
+          </Card>
+        </Container>
       </main>
     </>
   );
-}
+};
+
+export default Home;

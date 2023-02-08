@@ -1,7 +1,5 @@
 {
     "singleQuote": true,
-    "bracketSpacing": true,
-    "endOfLine": "lf",
     "singleAttributePerLine": true,
     "bracketSameLine": true,
     "jsxBracketSameLine": true,
