@@ -1,12 +1,13 @@
 .neo-container{
     width: 100%;
-    padding: 2em;
+    padding: 2.4em;
     display: flex;
     justify-content: space-around;
     
     &.xsm{
         padding: .4em;
         max-width: 350px;
+        flex-direction: column;
     }
     &.sm{
         padding: 1em;
