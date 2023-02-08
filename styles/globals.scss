@@ -1,0 +1,31 @@
+@import './fonts.scss';
+@import './reset&Vars.scss';
+@import '.././pages/components/Button/Button.scss';
+@import '.././pages/components/Container/Container.scss';
+@import '.././pages/components/TextInput/TextInput.scss';
+@import '.././pages/components/RadioGroup/RadioGroup.scss';
+@import '.././pages/components/Card/Card.scss';
+@import '.././pages/components/Text/Text.scss';
+@import '.././pages/components/Title/Title.scss';
+@import '.././pages/components/Tag/Tag.scss';
+@import '.././pages/components/CardImgBox/CardImgBox.scss';
+@import '.././pages/components/CardDescriptionBox/CardDescriptionBox.scss';
+@import '.././pages/components/SelectInput/SelectInput.scss';
+@import '.././pages/components/ToggleButton/ToggleButton.scss';
+
+html{
+  background-color: var(--bg-color);  
+}
+main{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100vw;
+    padding: 1rem;
+    overflow-x: hidden;
+    gap: 1em;
+    div{
+        display: flex;
+    } 
+}

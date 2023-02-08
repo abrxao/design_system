@@ -14,8 +14,15 @@ import CardDescriptionBox from './components/CardDescriptionBox/CardDescriptionB
 import Title from './components/Title/Title';
 import Text from './components/Text/Text';
 import SelectInput from './components/SelectInput/SelectInput';
+import ToggleButton from './components/ToggleButton/ToggleButton';
+import {BsFillMoonFill} from 'react-icons/bs';
+import {BsFillSunFill} from 'react-icons/bs';
 
 export const Home: FunctionComponent = () => {
+  const handleChange: Function = (e: SyntheticEvent) => {
+    const Root = document.querySelector(':root');
+    Root?.classList.toggle('light-mode');
+  };
   return (
     <>
       <Head>
@@ -35,6 +42,12 @@ export const Home: FunctionComponent = () => {
       </Head>
       <main>
         <Container variation='sm'>
+          <ToggleButton
+            id='swt-theme'
+            variation='lg'
+            onChange={(e) => handleChange(e)}
+            content={BsFillSunFill}
+          />
           <TextInput
             required={true}
             label='label'

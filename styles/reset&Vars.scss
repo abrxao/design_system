@@ -12,9 +12,10 @@
     --swt-text: 'to light';
     --textFont: 'Louis George Cafe';
     --titleFont: architextregular;
-    --purple-gradient: linear-gradient(112.5deg, rgb(150, 39, 201), rgb(197, 107, 170),rgb(150, 39, 201), rgb(197, 107, 170),rgb(150, 39, 201));
+    --purple-gradient: linear-gradient(112.5deg, rgb(150, 39, 201)10%, rgb(197, 107, 170),rgb(150, 39, 201), rgb(197, 107, 170),rgb(150, 39, 201)90%);
     --red-gradient: linear-gradient(112.5deg, #f7b42c , #fc575e,#f7b42c , #fc575e,#f7b42c);
     --green-gradient: linear-gradient(112.5deg, #7ee8fa , #80ff72,#7ee8fa , #80ff72,#7ee8fa );
+    --dark-gradient: linear-gradient(112.5deg, var(--color) 10%, #555,var(--color) , #555,var(--color) 90%);
     
 }
 .light-mode{
@@ -27,7 +28,7 @@
     --color:#3a3a3a;
     --invalid-color:#f77;
     --swt-text: 'to dark';
-    --red-gradient: linear-gradient(112.5deg, #f3c631 , #ca111a,#f3c631  , #ca111a,#f3c631 );
+    --red-gradient: linear-gradient(112.5deg,#f3c631 10% , #ca111a,#f3c631  , #ca111a,#f3c631 90% );
     --green-gradient:linear-gradient(112.5deg, #3bb78f, #0bab64,#3bb78f, #0bab64,#3bb78f );
 } 
 @media(prefers-color-scheme: light){
