@@ -2,9 +2,11 @@
         position: relative;
         display: flex;
         border-radius: .25em;
-        overflow: hidden;
         align-items: center;
         justify-content: center;
         width: 100%;
         aspect-ratio: 16/9;
+        img{
+            border-radius: .25em;
+        }
     }
