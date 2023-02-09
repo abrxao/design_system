@@ -1,25 +1,23 @@
 import React, { FunctionComponent, ReactElement } from 'react';
+import General from '../generalInterface';
 
-
-export interface AppProps {
-  variation?: string;
-  children: string;
+export interface AppProps extends General{
   width?: string;
   Icon?:any;
-  onChange?: Function;
+  type?: "button"|"submit"|"reset"|undefined;
 }
-
-
 
 const Button: FunctionComponent<AppProps> = (props) => {
   const width = props.width ?? 'auto';
   const variation = props.variation;
   const Icon = props.Icon;
-  const onChange = props.onChange?props.onChange:()=>{};
   return (
     <div className={`neo-button`}>
       <button
-        onChange={e=>onChange(e)}
+        type={props.type}
+        onClick={(e) => (props.onClick ? props.onClick(e) : {})}
+        onChange={(e) => (props.onChange ? props.onChange(e) : {})}
+        onKeyDown={(e) => (props.onKeyDown ? props.onKeyDown(e) : {})}
         className={`${variation} ${width}`}>
         {props.children}
         {Icon}

@@ -15,7 +15,6 @@ import Title from './components/Title/Title';
 import Text from './components/Text/Text';
 import SelectInput from './components/SelectInput/SelectInput';
 import ToggleButton from './components/ToggleButton/ToggleButton';
-import {BsFillMoonFill} from 'react-icons/bs';
 import {BsFillSunFill} from 'react-icons/bs';
 
 export const Home: FunctionComponent = () => {

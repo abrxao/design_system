@@ -1,6 +1,6 @@
 import React, { FunctionComponent } from "react";
-
-export interface RadioGroupProps{
+import General from "../generalInterface";
+export interface RadioGroupProps extends General{
     label:string;
     options:string[];
 }

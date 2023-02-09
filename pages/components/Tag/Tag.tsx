@@ -1,13 +1,8 @@
 import { FunctionComponent } from 'react';
 import React from 'react';
+import General from '../generalInterface';
 
-export interface TagProps {
-  children: any;
-  variation: string;
-  sx?: any;
-}
-
-const Tag: FunctionComponent<TagProps> = (props) => {
+const Tag: FunctionComponent<General> = (props) => {
   return (
     <div
       className={`neo-tag ${props.variation}`}

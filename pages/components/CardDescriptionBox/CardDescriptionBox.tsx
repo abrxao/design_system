@@ -1,6 +1,6 @@
 import React, { FunctionComponent } from 'react';
-
-interface CardDescriptionBoxProps{
+import General from '../generalInterface';
+interface CardDescriptionBoxProps extends General{
     children:any;
 } 
 

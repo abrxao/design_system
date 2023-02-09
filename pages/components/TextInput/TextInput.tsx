@@ -1,13 +1,13 @@
 import React, { FocusEvent, FunctionComponent, useEffect, useMemo, useState } from 'react';
 import {BsAsterisk} from 'react-icons/bs';
 import {TbAlertCircle} from 'react-icons/tb';
+import General from '../generalInterface';
 
-export interface TextInputProps {
+interface TextInputProps extends General{
   type?: string;
   required?: boolean;
   valid?: boolean;
   label?: string;
-  onBlur?: Function;
 }
 
 const TextInput: FunctionComponent<TextInputProps> = (props) => {
@@ -21,9 +21,13 @@ const TextInput: FunctionComponent<TextInputProps> = (props) => {
     }
   }, [value]);
 
-  const checkInput: Function = (e: FocusEvent<HTMLInputElement>) => {
+  const checkInput: Function = (
+    e: FocusEvent<HTMLInputElement>
+  ) => {
     setValue(e.target.value);
-    {props.onBlur && props.onBlur(e);}
+    {
+      props.onBlur && props.onBlur(e);
+    }
   };
 
   return (
@@ -32,6 +36,8 @@ const TextInput: FunctionComponent<TextInputProps> = (props) => {
         placeholder=' '
         className={`${value != '' ? 'filled' : ''}`}
         onBlur={(e) => checkInput(e)}
+        onChange={(e) => (props.onChange ? props.onChange(e) : {})}
+        onKeyDown={(e) => (props.onKeyDown ? props.onKeyDown(e) : {})}
         required={props.required}
       />
       {props.label && <label>{props.label}</label>}
@@ -40,7 +46,7 @@ const TextInput: FunctionComponent<TextInputProps> = (props) => {
           <BsAsterisk />
         </span>
       )}
-      {isValidClass==='invalid' && (
+      {isValidClass === 'invalid' && (
         <span className='alert'>
           Check this input value
           <TbAlertCircle />

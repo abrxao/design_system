@@ -1,12 +1,8 @@
 import React, { FunctionComponent } from 'react';
+import General from '../generalInterface';
 
-interface ContainerProps {
-  variation?: string;
-  children?: any;
-  sx?: any;
-}
 
-const Container: FunctionComponent<ContainerProps> = (props) => {
+const Container: FunctionComponent<General> = (props) => {
   return (
     <div
       className={`neo-container ${props.variation??''}`}

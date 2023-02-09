@@ -1,6 +1,6 @@
 import React, { FunctionComponent } from 'react';
-
-interface CardImgBox {
+import General from '../generalInterface';
+interface CardImgBox extends General{
   children: any;
   sx?: any;
 }

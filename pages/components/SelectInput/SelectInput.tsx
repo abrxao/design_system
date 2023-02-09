@@ -1,12 +1,10 @@
 import React,{FunctionComponent, SyntheticEvent } from "react";
-interface SelectInputProps {
+import General from "../generalInterface";
+interface SelectInputProps extends General{
   disable: boolean;
   isLoading: boolean;
   title: string;
-  id: string;
   options: string[];
-  sx?: any;
-  onChange?: (e: SyntheticEvent) => void;
 }
 
 const SelectInput: FunctionComponent<SelectInputProps> = (props)=> {

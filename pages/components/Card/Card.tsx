@@ -1,7 +1,8 @@
 
 import React, { FunctionComponent } from 'react';
+import General from '../generalInterface';
 
-interface CardProps {
+interface CardProps extends General{
   children: any;
   img?: any;
   variation?: string;
