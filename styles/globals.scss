@@ -16,6 +16,9 @@
 html{
   background-color: var(--bg-color);  
 }
+body{
+  min-height: 100vh;
+}
 main{
     display: flex;
     flex-direction: column;
@@ -23,6 +26,7 @@ main{
     justify-content: center;
     width: 100vw;
     padding: 1rem;
+    min-height: 100vh;
     overflow-x: hidden;
     gap: 1em;
     div{

@@ -1,43 +1,46 @@
-import React, { FocusEvent, FunctionComponent, useEffect, useMemo, useState } from 'react';
-import {BsAsterisk} from 'react-icons/bs';
-import {TbAlertCircle} from 'react-icons/tb';
+import React, {
+  FocusEvent,
+  FunctionComponent,
+  useEffect,
+  useMemo,
+  useState,
+} from 'react';
+import { BsAsterisk } from 'react-icons/bs';
+import { TbAlertCircle } from 'react-icons/tb';
 import General from '../generalInterface';
 
-interface TextInputProps extends General{
+interface TextInputProps extends General {
   type?: string;
   required?: boolean;
   valid?: boolean;
   label?: string;
+  value?: string;
 }
 
 const TextInput: FunctionComponent<TextInputProps> = (props) => {
-  
-  const [value, setValue] = useState('');
+  const [value, setValue] = useState<string | undefined>(props.value);
   const isValidClass = useMemo(() => {
-    if (value !== ''){
+    if (value !== '' && props.required) {
       return props.valid ? 'valid' : 'invalid';
-    }else{
+    } else {
       return '';
     }
   }, [value]);
 
-  const checkInput: Function = (
-    e: FocusEvent<HTMLInputElement>
-  ) => {
+  const checkInput: Function = (e: FocusEvent<HTMLInputElement>) => {
     setValue(e.target.value);
-    {
-      props.onBlur && props.onBlur(e);
-    }
+    if (props.onBlur) props.onBlur(e);
   };
 
   return (
     <div className={`neo-input ${isValidClass}`}>
+      {/* @ts-ignore */}
       <input
+        value={value}
         placeholder=' '
-        className={`${value != '' ? 'filled' : ''}`}
+        className={`${value != '' ? 'filled' : ''} ${props.className}`}
         onBlur={(e) => checkInput(e)}
-        onChange={(e) => (props.onChange ? props.onChange(e) : {})}
-        onKeyDown={(e) => (props.onKeyDown ? props.onKeyDown(e) : {})}
+        {...props}
         required={props.required}
       />
       {props.label && <label>{props.label}</label>}

@@ -1,26 +1,40 @@
 import Head from 'next/head';
-import React, { FunctionComponent, SyntheticEvent, useEffect } from 'react';
+import React, {
+  ChangeEvent,
+  FunctionComponent,
+  SyntheticEvent,
+  useEffect,
+  useState,
+} from 'react';
 import Button from './components/Button/Button';
 import Container from './components/Container/Container';
-import { SiAltiumdesigner } from 'react-icons/si';
 import TextInput from './components/TextInput/TextInput';
-import RadioGroup from './components/RadioGroup/RadioGroup';
-import Card from './components/Card/Card';
-import wallpaper from '../public/wallpaper.webp';
 import Tag from './components/Tag/Tag';
-import CardImgBox from './components/CardImgBox/CardImgBox';
-import Image from 'next/image';
-import CardDescriptionBox from './components/CardDescriptionBox/CardDescriptionBox';
-import Title from './components/Title/Title';
 import Text from './components/Text/Text';
 import SelectInput from './components/SelectInput/SelectInput';
-import ToggleButton from './components/ToggleButton/ToggleButton';
-import {BsFillSunFill} from 'react-icons/bs';
 
 export const Home: FunctionComponent = () => {
-  const handleChange: Function = (e: SyntheticEvent) => {
-    const Root = document.querySelector(':root');
-    Root?.classList.toggle('light-mode');
+  const [item, setItem] = useState('');
+  const [value, setValue] = useState<string>('');
+  const [selectInputItem, setSelectInputItem] = useState('');
+  const [selectInputValue, setSelectInputValue] = useState<string>('');
+
+  const handleChange = (
+    e: ChangeEvent<HTMLInputElement | HTMLSelectElement>
+  ) => {
+    setValue(e.target.value);
+  };
+
+  const handleClick: Function = (e: SyntheticEvent) => {
+    e.preventDefault();
+    setItem(value);
+    setValue('');
+  };
+
+  const handleClickSelectInput: Function = (e: SyntheticEvent) => {
+    e.preventDefault();
+    setSelectInputItem(selectInputValue);
+    setSelectInputValue('');
   };
   return (
     <>
@@ -40,84 +54,80 @@ export const Home: FunctionComponent = () => {
         />
       </Head>
       <main>
-        <Container variation='sm'>
-          <ToggleButton
-            id='swt-theme'
-            variation='lg'
-            onChange={(e) => handleChange(e)}
-            content={BsFillSunFill}
-          />
-          <TextInput
-            required={true}
-            label='label'
-          />
-          <RadioGroup
-            label='teste'
-            options={['one', 'two', 'three']}
-          />
-          <SelectInput
-            onChange={(e) => {
-              console.log(e.target);
-            }}
-            id='select'
-            disable={false}
-            isLoading={false}
-            title='Select one'
-            options={[' ', 'teste', 'teste2', 'teste3', 'teste4']}
-            sx={{ maxWidth: '140px' }}
-          />
+        <Container
+          variation='md'
+          sx={{
+            display: 'flex',
+            flexDirection: 'column',
+            gap: 12,
+            maxWidth: 520,
+          }}>
+          <form style={{ margin: 'auto' }}>
+            <TextInput
+              value={value}
+              label='name'
+              onChange={(e) => handleChange(e)}
+            />
+            <Button
+              variation='primary'
+              width='w-100'
+              data-testid='input-send'
+              onClick={(e) => handleClick(e)}>
+              Input Send
+            </Button>
+          </form>
+          <div
+            style={{
+              border: '1px solid #fff8',
+              width: '100%',
+              padding: 8,
+              borderRadius: 8,
+              position: 'relative',
+            }}>
+            <Tag variation='purple md'>{item}</Tag>
+          </div>
         </Container>
-        <Container variation='sm'>
-          <Button
-            variation='primary'
-            Icon={<SiAltiumdesigner />}>
-            button
-          </Button>
-          <Button
-            variation='outlined'
-            Icon={<SiAltiumdesigner />}>
-            button
-          </Button>
-          <Button
-            variation='bt-line'
-            width='w-100'>
-            button
-          </Button>
-          <Button
-            variation='secondary'
-            width='w-100'>
-            button
-          </Button>
-        </Container>
-        <Container variation='sm'>
-          <Card>
-            <CardImgBox>
-              <Tag
-                variation='purple'
-                sx={{ top: '-.25em' }}>
-                UNVALIABLE
-              </Tag>
-              <Image
-                fill
-                src={wallpaper}
-                alt=''
-              />
-            </CardImgBox>
-            <CardDescriptionBox>
-              <Title variation='h2'>Description</Title>
-              <Text>
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                Possimus alias aut magni officiis necessitatibus ipsum sit
-                repellendus, perspiciatis illum asperiores harum? Est saepe aut,
-                asperiores iste sunt consequuntur possimus
-                explicabo?sadfasdasdasdasdasdasdasdas Lorem ipsum dolor sit amet
-                consectetur adipisicing elit. Ea quis ducimus fugit quas tempore
-                maxime molestiae delectus distinctio totam illum eaque ipsam,
-                culpa recusandae quam necessitatibus odio. Atque, obcaecati
-                nesciunt.
-              </Text>
-            </CardDescriptionBox>
-          </Card>
+        <Container
+          variation='md'
+          sx={{
+            display: 'flex',
+            flexDirection: 'column',
+            gap: 12,
+            maxWidth: 520,
+          }}>
+          <form
+            style={{
+              margin: 'auto',
+              display: 'flex',
+              flexDirection: 'column',
+              gap: 12,
+            }}>
+            <SelectInput
+              data-testid={'select-teste'}
+              disable={false}
+              title='Escolha uma opção'
+              isLoading={false}
+              options={[' ', 'teste', 'teste2']}
+              onChange={(e) => setSelectInputValue(e.target.value)}
+            />
+            <Button
+              variation='primary'
+              width='w-100'
+              data-testid='select-input-send'
+              style={{ margin: 10 }}
+              onClick={(e) => handleClickSelectInput(e)}>
+              Select Input Send
+            </Button>
+          </form>
+          <div
+            style={{
+              border: '1px solid #fff8',
+              width: '100%',
+              padding: 8,
+              borderRadius: 8,
+            }}>
+            <Text>{selectInputItem}</Text>
+          </div>
         </Container>
       </main>
     </>

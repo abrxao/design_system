@@ -5,6 +5,7 @@ import General from '../generalInterface';
 const Tag: FunctionComponent<General> = (props) => {
   return (
     <div
+      {...props}
       className={`neo-tag ${props.variation}`}
       style={props.sx}>
       <div className={`content`}>{props.children}</div>

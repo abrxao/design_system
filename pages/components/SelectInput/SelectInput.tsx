@@ -1,20 +1,20 @@
-import React,{FunctionComponent, SyntheticEvent } from "react";
-import General from "../generalInterface";
-interface SelectInputProps extends General{
+import React, { FunctionComponent, SyntheticEvent } from 'react';
+import General from '../generalInterface';
+interface SelectInputProps extends General {
   disable: boolean;
   isLoading: boolean;
   title: string;
   options: string[];
+  'data-testid': string;
 }
 
-const SelectInput: FunctionComponent<SelectInputProps> = (props)=> {
+const SelectInput: FunctionComponent<SelectInputProps> = (props) => {
   return (
     <div
       id={props.id}
       className={'neo-input-select' + (props.disable ? ' disable' : '')}
       style={props.sx}
-      onChange={props.onChange?props.onChange:()=>{}}
-      >
+      onChange={props.onChange ? props.onChange : () => {}}>
       <label>
         {props.title}
         {props.isLoading && (
@@ -24,6 +24,7 @@ const SelectInput: FunctionComponent<SelectInputProps> = (props)=> {
         )}
         <select
           name={props.id}
+          data-testid={props['data-testid']}
           style={{ display: props.isLoading ? 'none' : 'block' }}>
           {props.options.map((tipo, index) => {
             return (
@@ -36,5 +37,5 @@ const SelectInput: FunctionComponent<SelectInputProps> = (props)=> {
       </label>
     </div>
   );
-}
+};
 export default SelectInput;

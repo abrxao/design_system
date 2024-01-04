@@ -32,7 +32,7 @@
     --green-gradient:linear-gradient(112.5deg, #3bb78f, #0bab64,#3bb78f, #0bab64,#3bb78f );
 } 
 @media(prefers-color-scheme: light){
-    .light-mode:root{
+    :root.light-mode{
         --valid-color: #0da189;
         --placeholder: #cecece;
         --bg-color:#e8e8e8;
