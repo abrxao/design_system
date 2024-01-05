@@ -1,6 +1,7 @@
 import React, {
   FocusEvent,
   FunctionComponent,
+  InputHTMLAttributes,
   useEffect,
   useMemo,
   useState,
@@ -8,13 +9,17 @@ import React, {
 import { BsAsterisk } from 'react-icons/bs';
 import { TbAlertCircle } from 'react-icons/tb';
 import General from '../generalInterface';
+import { InputType } from 'zlib';
 
 interface TextInputProps extends General {
   type?: string;
   required?: boolean;
   valid?: boolean;
   label?: string;
+  name?: string;
   value?: string;
+  'data-testid'?: string;
+  errormsg?: string;
 }
 
 const TextInput: FunctionComponent<TextInputProps> = (props) => {
@@ -51,7 +56,7 @@ const TextInput: FunctionComponent<TextInputProps> = (props) => {
       )}
       {isValidClass === 'invalid' && (
         <span className='alert'>
-          Check this input value
+          {props.errormsg}
           <TbAlertCircle />
         </span>
       )}

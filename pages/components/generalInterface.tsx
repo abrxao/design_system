@@ -1,7 +1,7 @@
-import React, { CSSProperties, StyleHTMLAttributes } from 'react';
+import React, { CSSProperties } from 'react';
 
 export default interface General {
-  onChange?: (event: React.ChangeEvent<HTMLSelectElement>) => void;
+  onChange?: (event: React.FormEvent<HTMLElement>) => void;
   onClick?: (
     e: React.MouseEvent<
       HTMLLabelElement | HTMLInputElement | HTMLButtonElement | HTMLDivElement

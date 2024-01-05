@@ -3,21 +3,40 @@ import React, {
   ChangeEvent,
   FunctionComponent,
   SyntheticEvent,
-  useEffect,
   useState,
 } from 'react';
 import Button from './components/Button/Button';
 import Container from './components/Container/Container';
 import TextInput from './components/TextInput/TextInput';
 import Tag from './components/Tag/Tag';
+import Title from './components/Title/Title';
 import Text from './components/Text/Text';
-import SelectInput from './components/SelectInput/SelectInput';
+
+interface CEPData {
+  logradouro: string;
+  localidade: string;
+  bairro: string;
+}
 
 export const Home: FunctionComponent = () => {
   const [item, setItem] = useState('');
   const [value, setValue] = useState<string>('');
-  const [selectInputItem, setSelectInputItem] = useState('');
-  const [selectInputValue, setSelectInputValue] = useState<string>('');
+  const [addressData, setAddressData] = useState<CEPData | null>(null);
+  const [cep, setCep] = useState('');
+
+  const fetchData = async () => {
+    if (cep == '') {
+      alert('Digite um CEP');
+    } else {
+      try {
+        const response = await fetch(`https://viacep.com.br/ws/${cep}/json/`);
+        const data = await response.json();
+        setAddressData(data);
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    }
+  };
 
   const handleChange = (
     e: ChangeEvent<HTMLInputElement | HTMLSelectElement>
@@ -31,11 +50,6 @@ export const Home: FunctionComponent = () => {
     setValue('');
   };
 
-  const handleClickSelectInput: Function = (e: SyntheticEvent) => {
-    e.preventDefault();
-    setSelectInputItem(selectInputValue);
-    setSelectInputValue('');
-  };
   return (
     <>
       <Head>
@@ -65,6 +79,7 @@ export const Home: FunctionComponent = () => {
           <form style={{ margin: 'auto' }}>
             <TextInput
               value={value}
+              data-testid='input-test'
               label='name'
               onChange={(e) => handleChange(e)}
             />
@@ -96,38 +111,34 @@ export const Home: FunctionComponent = () => {
             maxWidth: 520,
           }}>
           <form
-            style={{
-              margin: 'auto',
-              display: 'flex',
-              flexDirection: 'column',
-              gap: 12,
+            action=''
+            onSubmit={(e) => {
+              e.preventDefault();
+              fetchData();
             }}>
-            <SelectInput
-              data-testid={'select-teste'}
-              disable={false}
-              title='Escolha uma opção'
-              isLoading={false}
-              options={[' ', 'teste', 'teste2']}
-              onChange={(e) => setSelectInputValue(e.target.value)}
+            <TextInput
+              label='CEP'
+              type='text'
+              value={cep}
+              data-testid='cep-input-send'
+              onChange={(e) => setCep(e.target.value)}
             />
+            <div>{cep}</div>
             <Button
-              variation='primary'
-              width='w-100'
-              data-testid='select-input-send'
-              style={{ margin: 10 }}
-              onClick={(e) => handleClickSelectInput(e)}>
-              Select Input Send
+              variation='outlined'
+              data-testid='cep-button'>
+              Buscar Endereço
             </Button>
           </form>
-          <div
-            style={{
-              border: '1px solid #fff8',
-              width: '100%',
-              padding: 8,
-              borderRadius: 8,
-            }}>
-            <Text>{selectInputItem}</Text>
-          </div>
+
+          {addressData && (
+            <div style={{ display: 'flex', flexDirection: 'column' }}>
+              <Title variation='h2'>Informações de Endereço</Title>
+              <Text>Logradouro: {addressData.logradouro}</Text>
+              <Text>Localidade: {addressData.localidade}</Text>
+              <Text>Bairro: {addressData.bairro}</Text>
+            </div>
+          )}
         </Container>
       </main>
     </>

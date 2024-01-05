@@ -2,7 +2,6 @@ import React from 'react';
 import { act, fireEvent, render, screen } from '@testing-library/react';
 
 import Home from '..';
-import Title from '../components/Title/Title';
 
 // test('index', async () => {
 //   render(<Home />);
@@ -28,10 +27,28 @@ import Title from '../components/Title/Title';
 
 // });
 
+const unmockedFetch = global.fetch;
+
+beforeAll(() => {
+  global.fetch = () =>
+    Promise.resolve({
+      json: () =>
+        Promise.resolve({
+          logradouro: 'Praça da Sé',
+          bairro: 'Sé',
+          localidade: 'São Paulo',
+        }),
+    } as Response);
+});
+
+afterAll(() => {
+  global.fetch = unmockedFetch;
+});
+
 test('simulation input', async () => {
   render(<Home />);
   const showingText = 'hello world';
-  const input = screen.getByRole('textbox');
+  const input = screen.getByTestId('input-test');
   const button = screen.getByTestId('input-send');
   act(() => {
     fireEvent.change(input, { target: { value: showingText } });
@@ -42,14 +59,20 @@ test('simulation input', async () => {
   expect(anwser).toBeInTheDocument();
 });
 
-test('render primary button', async () => {
-  const { getByText } = render(
-    <Title
-      variation='h2'
-      sx={{ padding: '.85em 0em' }}>
-      Hello World2
-    </Title>
-  );
-  const title = getByText('Hello World2');
-  expect(title).toBeInTheDocument();
+test('testing CEP query', async () => {
+  render(<Home />);
+  const showingText = '01001000';
+  const input = screen.getByTestId('cep-input-send');
+  const button = screen.getByTestId('cep-button');
+  await act(async () => {
+    fireEvent.change(input, { target: { value: showingText } });
+    fireEvent.click(button);
+  });
+
+  const logradouro = await screen.findByText('Logradouro: Praça da Sé');
+  expect(logradouro).toBeInTheDocument();
+  const localidade = await screen.findByText('Localidade: São Paulo');
+  expect(localidade).toBeInTheDocument();
+  const bairro = await screen.findByText('Bairro: Sé');
+  expect(bairro).toBeInTheDocument();
 });
