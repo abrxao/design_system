@@ -9,7 +9,6 @@ import React, {
 import { BsAsterisk } from 'react-icons/bs';
 import { TbAlertCircle } from 'react-icons/tb';
 import General from '../generalInterface';
-import { InputType } from 'zlib';
 
 interface TextInputProps extends General {
   type?: string;
@@ -20,6 +19,9 @@ interface TextInputProps extends General {
   value?: string;
   'data-testid'?: string;
   errormsg?: string;
+  onChange?: (
+    event: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
+  ) => void;
 }
 
 const TextInput: FunctionComponent<TextInputProps> = (props) => {

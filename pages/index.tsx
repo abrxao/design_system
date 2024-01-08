@@ -88,7 +88,7 @@ export const Home: FunctionComponent = () => {
               width='w-100'
               data-testid='input-send'
               onClick={(e) => handleClick(e)}>
-              Input Send
+              Input Sended
             </Button>
           </form>
           <div

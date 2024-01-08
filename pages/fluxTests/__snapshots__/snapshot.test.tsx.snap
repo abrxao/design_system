@@ -1,0 +1,91 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`snapshot 1`] = `
+<div>
+  <main>
+    <div
+      class="neo-container md"
+      style="display: flex; flex-direction: column; gap: 12px; max-width: 520px;"
+    >
+      <form
+        style="margin: auto;"
+      >
+        <div
+          class="neo-input "
+        >
+          <input
+            class=" undefined"
+            data-testid="input-test"
+            label="name"
+            placeholder=" "
+            value=""
+          />
+          <label>
+            name
+          </label>
+        </div>
+        <div
+          class="neo-button"
+        >
+          <button
+            class="primary w-100"
+            data-testid="input-send"
+            variation="primary"
+            width="w-100"
+          >
+            Input Sended
+          </button>
+        </div>
+      </form>
+      <div
+        style="border: 1px solid #fff8; width: 100%; padding: 8px; border-radius: 8px; position: relative;"
+      >
+        <div
+          class="neo-tag purple md"
+          variation="purple md"
+        >
+          <div
+            class="content"
+          />
+        </div>
+      </div>
+    </div>
+    <div
+      class="neo-container md"
+      style="display: flex; flex-direction: column; gap: 12px; max-width: 520px;"
+    >
+      <form
+        action=""
+      >
+        <div
+          class="neo-input "
+        >
+          <input
+            class=" undefined"
+            data-testid="cep-input-send"
+            label="CEP"
+            placeholder=" "
+            type="text"
+            value=""
+          />
+          <label>
+            CEP
+          </label>
+        </div>
+        <div />
+        <div
+          class="neo-button"
+        >
+          <button
+            class="outlined "
+            data-testid="cep-button"
+            variation="outlined"
+          >
+            Buscar Endereço
+          </button>
+        </div>
+      </form>
+    </div>
+  </main>
+</div>
+`;
